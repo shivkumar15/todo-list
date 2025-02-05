@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List Sidebar</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+   
+      <div class="sidebar"> 
+        <div class="sidebar-header">
+            <h2>To-<span class="highlight">Do</span> List</h2>
+          </div>
+          <ul class="menu">
+            <li>
+              <i class="fas fa-crown fa-lg" style="color: rgb(255, 191, 74)"></i>
+              Upgrade to PRO
+            </li>
+            <li><i class="fas fa-star fa-lg"></i> Star Tasks</li>
+            <li><i class="fas fa-plus-circle fa-lg"></i> Create New</li>
+            <li><i class="fas fa-paint-brush fa-lg"></i> Theme</li>
+            <li><i class="fas fa-cube fa-lg"></i> Widget</li>
+            <li><i class="fas fa-donate fa-lg"></i> Donate</li>
+            <li>
+              <i class="fas fa-th-large fa-lg"></i> Family Apps
+              <span class="ad">AD</span>
+            </li>
+        
+            <li class="category">
+              <i class="fas fa-th fa-lg"></i> Category
+              <span class="toggle-btn">▼</span>
+              <ul class="submenu">
+                <li>
+                  <i class="fas fa-file-alt fa-lg"></i> All
+                  <span class="count">4</span>
+                </li>
+                <li>
+                  <i class="fas fa-briefcase"></i> Work
+                  <span class="count">0</span>
+                </li>
+                <li>
+                  <i class="fas fa-user"></i> Personal
+                  <span class="count">0</span>
+                </li>
+                <li>
+                  <i class="fas fa-heart"></i> Wishlist
+                  <span class="count">0</span>
+                </li>
+                <li>
+                  <i class="fas fa-birthday-cake"></i> Birthday
+                  <span class="count">0</span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+      </div>
+
+
+        <div class="main-content">
+            <div class="topBar">
+              <div class="all"><p>All</p></div>
+              <div class="work"><p>Work</p></div>
+              <div class="personal"><p>Personal</p></div>
+              <div class="wishlist"><p>Wishlist</p></div>
+              <div class="birthday"><p>Birthday</p></div>
+              <!-- <div class="profile"><p><i class="fa-sharp-duotone fa-regular fa-user"></i></p></div> -->
+            </div>
+            
+        </div>
+
+
+        <div class="page">
+          <div class="content-pg">
+            <div class="profile">
+              <h1>To-<span class="highlight">Do</span> List</h1>
+              <!-- <p><i class="fa-sharp-duotone fa-regular fa-user"></i></p></div> -->
+
+
+              <h2>Task Manager</h2>
+              <button onclick="addTask()">Add New Task</button>
+              <ul id="taskList"></ul>
+              
+              <style>
+                h2{
+                  margin-bottom: 100px;
+                  /* text-decoration: underline; */
+                  font-size: 2.9vw;
+                }
+                body {
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    /* margin: 50px; */
+                }
+                #taskList {
+                    /* margin-top: 20px; */
+                    padding: 0;
+                    list-style: none;
+                }
+                .task-item {
+                    background: #f4f4f4;
+                    padding: 10px;
+                    margin: 5px 0;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+                .done {
+                    text-decoration: line-through;
+                    color: gray;
+                }
+                
+                button {
+                  justify-content: center;
+                 text-align: center;
+                    background-color: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    border-radius: 5px;
+                }
+              
+                button:hover {
+                    background-color: #2f1ee8;
+                }
+                .toggle-btn {
+                    background-color: #007bff;
+                    margin-left: 10px;
+                }
+                .toggle-btn:hover {
+                    background-color: #0c498a;
+                }
+            </style>
+       
+       
+           
+            <script>
+                function addTask() {
+                    let task = prompt("Add new task:");
+                    if (task) {
+                        let taskList = document.getElementById("taskList");
+                        let listItem = document.createElement("li");
+                        listItem.classList.add("task-item");
+                        
+                        let taskText = document.createElement("span");
+                        taskText.textContent = task;
+                        
+                        let toggleButton = document.createElement("button");
+                        toggleButton.textContent = "Done";
+                        toggleButton.classList.add("toggle-btn");
+                        toggleButton.onclick = function() {
+                            taskText.classList.toggle("done");
+                            toggleButton.textContent = taskText.classList.contains("done") ? "Undone"  : "Done";
+                            
+                        };
+                        
+                        listItem.appendChild(taskText);
+                        listItem.appendChild(toggleButton);
+                        taskList.appendChild(listItem);
+                    }
+                }
+            </script>
+       
+            
+          
+          
+  
+
+         
+
+         
+        </div>
+          
+        </div>
+
+
+<div id="dialog" class="dialog">
+  <div class="dialog-content">
+    <h3>Create New Category</h3>
+    <input type="text" id="newCategoryInput" placeholder="Input here" />
+    <div class="dialog-buttons">
+      <button id="saveCategory">Save</button>
+      <button id="cancelCategory">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="editDeleteDialog" >
+  <div class="dialog-content">
+    <input type="text" id="editCategoryInput" placeholder="Edit category" />
+    <div class="dialog-buttons">
+      <button id="saveEdit">Save</button>
+      <button id="deleteCategory">Delete</button>
+      <button id="cancelEdit">Cancel</button>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+    <script>
+      document
+        .querySelector(".category ")
+        .addEventListener("click", function () {
+          document.querySelector(".submenu").classList.toggle("show");
+        });
+
+        document.querySelectorAll(".topBar p").forEach((item) => {
+    item.addEventListener("click", function () {
+        // Remove 'active' class from all <p> elements
+        document.querySelectorAll(".topBar p").forEach((p) => {
+            p.classList.remove("active");
+        });
+
+        // Add 'active' class to the clicked <p>
+        this.classList.add("active");
+    });
+});
+
+ 
+document.querySelector(".menu li:nth-child(3)").addEventListener("click", function () {
+    document.getElementById("dialog").style.display = "flex";
+  });
+
+  document.getElementById("cancelCategory").addEventListener("click", function () {
+    document.getElementById("dialog").style.display = "none";
+  });
+
+  function loadCategories() {
+    let savedCategories = JSON.parse(localStorage.getItem("categories")) || [];
+    savedCategories.forEach(categoryName => {
+      addCategoryToTopBar(categoryName);
+    });
+  }
+
+  function addCategoryToTopBar(categoryName) {
+    let newCategory = document.createElement("div");
+    let categoryP = document.createElement("p");
+    categoryP.textContent = categoryName;
+    categoryP.addEventListener("dblclick", function (event) {
+      showEditDeleteDialog(event, categoryP);
+    });
+    newCategory.appendChild(categoryP);
+    document.querySelector(".topBar").appendChild(newCategory);
+  }
+
+  document.getElementById("saveCategory").addEventListener("click", function () {
+    let categoryName = document.getElementById("newCategoryInput").value.trim();
+    if (categoryName) {
+      addCategoryToTopBar(categoryName);
+      let savedCategories = JSON.parse(localStorage.getItem("categories")) || [];
+      savedCategories.push(categoryName);
+      localStorage.setItem("categories", JSON.stringify(savedCategories));
+      document.getElementById("dialog").style.display = "none";
+      document.getElementById("newCategoryInput").value = "";
+    }
+  });
+
+  let currentCategoryElement = null;
+  function showEditDeleteDialog(event, categoryElement) {
+    currentCategoryElement = categoryElement;
+    let dialog = document.getElementById("editDeleteDialog");
+    let inputField = document.getElementById("editCategoryInput");
+    inputField.value = categoryElement.textContent;
+    dialog.style.display = "block";
+    dialog.style.position = "absolute";
+    dialog.style.top = `${event.clientY + 10}px`;
+    dialog.style.left = `${event.clientX}px`;
+  }
+
+  document.getElementById("saveEdit").addEventListener("click", function () {
+    if (currentCategoryElement) {
+      let newName = document.getElementById("editCategoryInput").value.trim();
+      if (newName) {
+        let savedCategories = JSON.parse(localStorage.getItem("categories")) || [];
+        let index = savedCategories.indexOf(currentCategoryElement.textContent);
+        if (index !== -1) {
+          savedCategories[index] = newName;
+          localStorage.setItem("categories", JSON.stringify(savedCategories));
+        }
+        currentCategoryElement.textContent = newName;
+      }
+    }
+    document.getElementById("editDeleteDialog").style.display = "none";
+  });
+
+  document.getElementById("deleteCategory").addEventListener("click", function () {
+    if (currentCategoryElement) {
+      let savedCategories = JSON.parse(localStorage.getItem("categories")) || [];
+      savedCategories = savedCategories.filter(cat => cat !== currentCategoryElement.textContent);
+      localStorage.setItem("categories", JSON.stringify(savedCategories));
+      currentCategoryElement.parentElement.remove();
+    }
+    document.getElementById("editDeleteDialog").style.display = "none";
+  });
+
+  document.getElementById("cancelEdit").addEventListener("click", function () {
+    document.getElementById("editDeleteDialog").style.display = "none";
+  });
+
+  document.addEventListener("DOMContentLoaded", loadCategories);
+
+  function showEditDeleteDialog(event, categoryElement) {
+    currentCategoryElement = categoryElement;
+    let dialog = document.getElementById("editDeleteDialog");
+    let inputField = document.getElementById("editCategoryInput");
+    inputField.value = categoryElement.textContent;
+    dialog.style.display = "block";
+
+    let screenWidth = window.innerWidth;
+    let dialogWidth = dialog.offsetWidth;
+    let leftPosition = event.clientX;
+    let topPosition = event.clientY + 10;
+
+    if (leftPosition + dialogWidth > screenWidth) {
+      leftPosition = screenWidth - dialogWidth - 10;
+    }
+
+    dialog.style.position = "absolute";
+    dialog.style.top = `${topPosition}px`;
+    dialog.style.left = `${leftPosition}px`;
+  }
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
